@@ -1,0 +1,7 @@
+子进程当前工作目录为: /Users/shuiqin/Documents/workspace/app/node/process/execfile
+0: /usr/local/bin/node
+1: /Users/shuiqin/Documents/workspace/app/node/process/execfile/childprocess1.js
+2: one1
+3: two1
+4: three1
+5: four1

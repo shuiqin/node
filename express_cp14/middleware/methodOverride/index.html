@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function submitData() {
+            var obj = {
+                firstname: document.getElementById('txtFirstName').value,
+                username: document.getElementById('txtUserName').value
+            }
+
+            var form = document.getElementById('form1');
+            console.log(form);
+            var formData = new FormData(form);
+            console.log(formData);
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'index.html?_method=put', true);
+            xhr.onload = function (e) {
+                if (this.status == 200){
+                    document.getElementById('result').innerHTML = this.response;
+                }
+            }
+           // xhr.send(JSON.stringify(obj)); // 此列p438 有错  // put方法
+            xhr.send(formData);
+        }
+    </script>
+</head>
+<body>
+    <form id="form1">
+        <label>用户名:</label><input name="username" id="txtUserName"/><br/>
+        <label>姓:</label><input name="firstname" id="txtFirstName"/><br/>
+        <input type="submit" value="提交" onclick="submitData();"/>
+        <input type="hidden" name="_method" value="put"/>
+    </form>
+<output id="result"></output>
+</body>
+</html>

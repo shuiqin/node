@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <form id="form1">
+        <label>用户名:</label><input name="username" id="txtUserName"/><br/>
+        <label>姓:</label><input name="firstname" id="txtFirstName"/><br/>
+        <input type="submit" value="提交" onclick="submitData();"/>
+    </form>
+<div id="result"></div>
+</body>
+<script type="text/javascript">
+    function submitData() {
+        var obj = {
+            firstname: document.getElementById('txtFirstName').value,
+            username: document.getElementById('txtUserName').value
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('delete', 'index.html', true);
+     /*   xhr.onreadystatechange=state_Change;
+        function state_Change() {
+            console.log(xhr);
+            if (xhr.readyState==4)
+            {// 4 = "loaded"
+                console.log(xhr.status);
+                if (xhr.status==0)
+                {// 200 = OK
+                    document.getElementById('result').innerHTML = 'test';
+                }
+                else
+                {
+                    alert("Problem retrieving XML data");
+                }
+            }
+        }*/
+        xhr.onload = function (e) {
+            alert(this.status);
+            if (this.status == 200){
+                document.getElementById('result').innerHTML = this.response;
+            }
+        }
+        xhr.send(JSON.stringify(obj)); // 此列p438 有错
+    }
+</script>
+</html>

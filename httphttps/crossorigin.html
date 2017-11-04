@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cross origin:使用ajax 获取nodejs服务器数据</title>
+</head>
+<body>
+    <input type="button" value="获取数据" onclick="getData()"/>
+    <div id="div"></div>
+</body>
+<script type="text/javascript">
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:1338/', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    document.getElementById('div').innerHTML = xhr.responseText;
+                } else {
+                    document.getElementById('div').innerHTML = xhr.responseText;
+                }
+            }
+        }
+        xhr.send();
+    }
+</script>
+</html>
